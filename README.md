@@ -85,7 +85,7 @@ Example: robot.delay(500)
 The results of your algorithm will be in the Completed_Runs folder of the repo. Once you pull the repo, you can navigate in to the Completed_Runs folder to your folder. If you forget the name of your folder, it will be sent in the email you received notifying you that the code was done running. Within this folder, you should see the following directory tree (new files and directories are in bold).
 	
 OriginalName_completed
-&emsp; usr_code.py
+&emsp; usr_code.py <br>  
 		init_poses.csv
 		email.txt
 		**init_pose_errors.csv**

@@ -1,6 +1,7 @@
 # CoachbotSwarm Repo
 
-The Coachbot Swarm and this repo is owned and maintained by the Rubenstein Lab at Northwestern University. 
+The Coachbot Swarm and this repo is owned and maintained by the Rubenstein Lab at Northwestern University. If you have any questions, comments or concerns, please email us at coachbotswarmsystem@gmail.com and someone from our team will get back to you. We ask that you respect the system and help us keep it accessible to fellow academics by adhering to the guidelines explained in this guide. We reserve the right to refuse access to any individuals who are not courteous to the system or the Coachbot team.
+
 Check the user guide for more detailed information about how to use the system and troubleshooting: https://docs.google.com/document/d/1fQcU9cK_8bXtfPoXu4C7zOwC8WK4yg2npxJTBvi9Fgg/edit?usp=sharing
 
 ## Obtaining Contributer Access to the Repo
@@ -10,24 +11,17 @@ To gain access to push your code to the repo, email us at coachbotswarmsystem@gm
 ## Submitting Code to be Run on the Coachbot System
 
 Every submission to our system must be a folder with three files. The first is a .txt file called email.txt which simply contains the email address that should be contacted about the submitted code. The second file specifies the initial positions of the robots before the user code is run. Specifications of that file’s format and restrictions on robot positions are outlined in Section II.A.1. The third mandatory file is the code that will be uploaded to all active robots. This file, usr_code.py, must be written in python and formatted in the way outlined in Section II.A.2. The robots run python 2.7.16. There is a sample folder in the repo containing all three required files and a template for usr_code.py in the Example_Folder. Remember that your code should be placed in a folder in the Code_Queue folder to be run. 
+
 Check the User Guide for more details on the guidelines of these input files.
-
-usr_code.py format:
-`import math
-import struct
-
-def usr(robot):
-	# write code here
-	while condition:
-		robot.delay() # defaults to 20 ms which is sufficient
-		# more code here
-return condition`
 
 ## Available Robot Functions
 
 1. robot.set_vel(left,right)
+
 Parameters: left and right should be whole numbers between -50 and 50 that indicate wheel speeds. 0 being no movement and 50 being the fastest possible speed. The negative values indicate that the wheel should spin backwards at that speed. These values have a unit of 
+
 Output: none
+
 Example: robot.set_vel(30,-40)
 
 2. robot.set_led(r,g,b)

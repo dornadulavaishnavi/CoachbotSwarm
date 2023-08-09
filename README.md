@@ -16,7 +16,7 @@ Check the User Guide for more details on the guidelines of these input files.
 
 ## Available Robot Functions
 
-1. robot.set_vel(left,right)
+### robot.set_vel(left,right)
 
 Parameters: left and right should be whole numbers between -50 and 50 that indicate wheel speeds. 0 being no movement and 50 being the fastest possible speed. The negative values indicate that the wheel should spin backwards at that speed. These values have a unit of 
 
@@ -24,39 +24,60 @@ Output: none
 
 Example: robot.set_vel(30,-40)
 
-2. robot.set_led(r,g,b)
+### robot.set_led(r,g,b)
+
 Parameters: r,g,b should be integers between and 0 and 100 to set the color and brightness of the onboard LED
+
 Output: none
+
 Example: robot.set_led(30,100,0)
 
-3. robot.virtual_id()
+### robot.virtual_id()
+
 Parameters: none
+
 Output: An integer that is the virtual ID of the robot. 
+
 Example: virt_id = robot.virtual_id()
 
-4. robot.get_clock()
+### robot.get_clock()
+
 Parameters: none
+
 Output: a float of the number of seconds elapsed since the program started
+
 Example: curr_time = robot.get_clock()
 
-5. robot.send_msg(msg)
+### robot.send_msg(msg)
+
 Parameters: msg should be a string that is less than 64 bytes or it will be truncated. This msg can be the output of the struck.pack() function explained in the section below.
+
 Output: True is successful, False if not
+
 Example: robot.send_msg(struct.pack(‘fffii’, float_0, float_1, float_2, int_0, int_1))
 
-6. robot.recv_msg()
+### robot.recv_msg()
+
 Parameters: none
+
 Output: Returns the messages in the buffer since the last call of this function. 
+
 Example: msgs = robot.recv_msg()
 
-7. robot.get_pose()
+### robot.get_pose()
+
 Parameters: none
+
 Output: a list with the [x,y,theta], check to see that this output is valid before using it
+
 Example: pose = robot.get_pose()
 
-8. robot.delay()
+### robot.delay()
+
 Parameters: default is 20ms but a different integer parameter can be specified
+
 Output: none
+
 Example: robot.delay(500)
 
 ## What to Expect From the Results

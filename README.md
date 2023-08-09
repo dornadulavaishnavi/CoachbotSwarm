@@ -84,17 +84,17 @@ Example: robot.delay(500)
 
 The results of your algorithm will be in the Completed_Runs folder of the repo. Once you pull the repo, you can navigate in to the Completed_Runs folder to your folder. If you forget the name of your folder, it will be sent in the email you received notifying you that the code was done running. Within this folder, you should see the following directory tree (new files and directories are in bold).
 	
-OriginalName_completed
+<p>OriginalName_completed <br>
 &emsp; usr_code.py <br>  
-		init_poses.csv
-		email.txt
-		**init_pose_errors.csv**
-		**output_logs**
-			**ID_mapping.csv**
-			**camera_video.mp4**
-			**#_logging.csv**
-			**#**
-			**automation_errors**
+&emsp; init_poses.csv <br>
+&emsp; email.txt <br>
+&emsp; **init_pose_errors.csv** <br>
+&emsp; **output_logs** <br>
+&emsp; &emsp; **ID_mapping.csv** <br>
+&emsp; &emsp; **camera_video.mp4** <br>
+&emsp; &emsp; **#_logging.csv** <br>
+&emsp; &emsp; **#** <br>
+&emsp; &emsp; **automation_errors**</p>
 
 The **init_pose_errors.csv** will contain the contents of **init_poses.csv** or list any issues with the initial poses specified. The output_logs folder will hold all the outputs from the algorithm run. Since the ID you specify in the **init_poses.csv** file might not match the physical robot ID, the **ID_mapping.csv** file specifies which robot corresponds to which virtual ID. The .mp4 file is the recording of the run from our overhead raspberry pi camera. The logging files will be named with the virtual ID of the robot it pertains to and contain the position of the corresponding robot at every timestep of the run. This csv file is formatted in a timestep, x position, y position, theta angle in radians for each line. The **#** file is the virtual ID of the pertaining robot and will have any information you choose to write to the **experiment_log** file in your code. The **automation_errors** file will list any high level errors such as runtime limits or robots trying to exit the play field.
 

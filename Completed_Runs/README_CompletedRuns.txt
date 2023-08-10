@@ -28,3 +28,4 @@ The automation_errors file will contain information of high level errors such as
 Runtime limit: If you receive an email saying that your code hit the time limit, please make sure your code hits its return conditions properly or reduce the runtime of your code. You will still receive all the information above for the length of time your algorithm ran and access it in the same way.
 
 Robot out of Bounds: If you receive an email or see in your automation_errors file that some robots went out of bounds, please make sure that your code keeps the robots within the playfield. The message in the file should specify the offending robot and the position it left the field to help with debugging. You will still receive all the information above for the length of time your algorithm ran and access it in the same way.
+

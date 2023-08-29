@@ -17,9 +17,15 @@ def usr(robot):
         robot.delay()
         # your looping code here
 
+        log.write("After delay\n")
+        log.flush()
+
         curr_pose = robot.get_pose()    # get the current position of the robot
         while not curr_pose:    # in case the robot is unable to localize, wait until it can
             curr_pose = robot.get_pose()    # poses are received in a list of [x,y,theta]
+
+        log.write("Got the pose\n")
+        log.flush()
 
         # generate and send a message to all the other robots
         robot.send_msg(robot.send_msg(struct.pack('ifff', robot.id, curr_pose[0], curr_pose[1], curr_pose[2])))

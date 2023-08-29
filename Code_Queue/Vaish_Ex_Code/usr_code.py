@@ -28,7 +28,7 @@ def usr(robot):
         log.flush()
 
         # generate and send a message to all the other robots
-        robot.send_msg(robot.send_msg(struct.pack('ifff', robot.id, curr_pose[0], curr_pose[1], curr_pose[2])))
+        robot.send_msg(struct.pack('ifff', robot.id, curr_pose[0], curr_pose[1], curr_pose[2]))
         
         # print message to the log file
         debug_string = "Robot " + str(robot.virtual_id()) + " is facing " + str(curr_theta) + "\n"
@@ -45,6 +45,9 @@ def usr(robot):
             for i in range(num_loops):  # turn in the other direction for 1 second (5 loops)
                 robot.set_vel(-45,45)
                 robot.delay(200)
+
+        log.write("Robot finished turning\n")
+        log.flush()
 
         rec_str = robot.recv_msg()  # grab any messages sent
         if len(rec_str) > 0:    # if any messages have been received

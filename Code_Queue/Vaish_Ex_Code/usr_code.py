@@ -28,7 +28,7 @@ def usr(robot):
         log.flush()
 
         # generate and send a message to all the other robots
-        robot.send_msg(struct.pack('ifff', robot.id, curr_pose[0], curr_pose[1], curr_pose[2]))
+        robot.send_msg(struct.pack('ifff', virtual_id(), curr_pose[0], curr_pose[1], curr_pose[2]))
         
         # print message to the log file
         debug_string = "Robot " + str(robot.virtual_id()) + " is facing " + str(curr_theta) + "\n"

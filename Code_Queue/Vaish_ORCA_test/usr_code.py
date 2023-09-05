@@ -45,6 +45,9 @@ square = 0
 
 def usr(robot):
     robot.logger.info("started program")    
+    log = open("experiment_log", "wb")
+    log.write("in user code")
+    log.flush()
     incoming_dict = {}
     boundary = {}
     dict_ORCA = {}
@@ -99,10 +102,14 @@ def usr(robot):
         prev_pose = curr_pose
         first_position_timestamp = robot.get_clock()
         robot.logger.info("Current Position: " + str(curr_pose))
+        log.write("Current Position: " + str(curr_pose) + "\n")
+        log.flush()
 
         X = (curr_x + D*math.cos(curr_theta))
         Y = (curr_y + D*math.sin(curr_theta))
         robot.logger.info("Current pose: " + str(curr_pose) + "," + str(X) + "," + str(Y))
+        log.write("Current pose: " + str(curr_pose) + "," + str(X) + "," + str(Y) + "\n")
+        log.flush()
         # robot.logger.info(str(desired_theta) + "," + str(curr_theta) + "," + str(X) + "," + str(Y))
         # robot.logger.info("\n\ncurrent position: " + str(curr_pose))
 
@@ -132,6 +139,8 @@ def usr(robot):
         desired_theta = math.atan2(own_opt_y, own_opt_x)
         # [own_opt_x,own_opt_y, desired_theta] = compute_own_velocity([curr_x,curr_y], [desired_x,desired_y])
         robot.logger.info(str(robot.virtual_id()) + " : " + str(desired_theta * (180 / math.pi)) + " own optimal angle")
+        log.write(str(robot.virtual_id()) + " : " + str(desired_theta * (180 / math.pi)) + " own optimal angle\n")
+        log.flush()
 
         own_opt_x = math.cos(desired_theta)
         own_opt_y = math.sin(desired_theta)
@@ -140,6 +149,8 @@ def usr(robot):
         y_dot = own_opt_y/velocity_time_step
         theta_dot = (desired_theta - curr_theta)/velocity_time_step
         robot.logger.info("Optimal Velocities- [" + str(x_dot) + ", " + str(y_dot) + "] theta: " + str(theta_dot))
+        log.write("Optimal Velocities- [" + str(x_dot) + ", " + str(y_dot) + "] theta: " + str(theta_dot) + "\n")
+        log.flush()
         # v = [own_opt_x,own_opt_y]
 
         # send robot location
@@ -186,6 +197,8 @@ def usr(robot):
             no_other_robots_active_flag = 0
         # robot.logger.info("Done receiving messages")
         robot.logger.info(incoming_dict)
+        log.write(str(incoming_dict) + "\n")
+        log.flush()
         
         updated_x = x_dot
         updated_y = y_dot
@@ -206,13 +219,19 @@ def usr(robot):
                     w = compute_w(robot, boundary[bot], [updated_x, updated_y], [incoming_dict[bot][3],
                                                 incoming_dict[bot][4]])
                     robot.logger.info("computing w: " + str(w))
+                    log.write("computing w: " + str(w) + "\n")
+                    log.flush()
                     # compute outward normal of boundary at point va-vb+u
                     n = compute_n(boundary[bot], w, updated_x, updated_y, incoming_dict[bot][3],
                                                 incoming_dict[bot][4])
                     robot.logger.info("computing n: " + str(n))
+                    log.write("computing n: " + str(n) + "\n")
+                    log.flush()
                     # compute orca
                     dict_ORCA[bot] = gen_ORCA_line(robot, boundary[bot], n, w, updated_x, updated_y)
                     robot.logger.info("ORCA line generated: " + str(dict_ORCA[bot]))
+                    log.write("ORCA line generated: " + str(dict_ORCA[bot]))
+                    log.flush()
         try:
             robot.logger.info("VO: " + str(boundary))
             robot.logger.info("orca dict: " + str(dict_ORCA))
@@ -237,6 +256,8 @@ def usr(robot):
         if invalid == 0:
             [x_dot,y_dot] = choose_orca_vel([x_dot,y_dot], orca_grid_array)
             robot.logger.info(str(robot.virtual_id()) + " : output: [" + str(x_dot) + ", " + str(y_dot) + "]")
+            log.write(str(robot.virtual_id()) + " : output: [" + str(x_dot) + ", " + str(y_dot) + "]\n")
+            log.flush()
             invalid = 0
         # within_other_robot_dist_flag = 0
         

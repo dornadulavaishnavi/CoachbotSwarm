@@ -20,9 +20,9 @@ def usr(robot):
 
     # Scaling parameters for each vector
     # Migration
-    M = 0.5 # 0.75 # 1.0/2.0 
+    M = 0.4 # 0.75 # 1.0/2.0 
     # Separation
-    S = 1.0 # 1.2
+    S = 0.8 # 1.2
     # Cohesion
     C = 1.5 # 1.0
     #Alignment
@@ -39,7 +39,7 @@ def usr(robot):
     robot.logger.info(virt_id)
     log.write(str(virt_id))
     
-    while count<18:    
+    while True:    
         log.write("\nlooping \n")
         log.flush()
         # Initialize dictionary of neighbors during first iteration

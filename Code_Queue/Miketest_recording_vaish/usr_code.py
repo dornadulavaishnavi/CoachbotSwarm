@@ -8,7 +8,7 @@ def usr(robot):
 		robot.set_led(0,100,0)
 		robot.set_vel(-10,10)
 		robot.delay(500)
-		for j in range(4):
+		for j in range(10):
 			for i in range(5):
 				robot.set_led(100,0,0)
 				for i in range(5):
@@ -21,5 +21,5 @@ def usr(robot):
 					robot.delay(100)
 			robot.set_led(0,0,100)
 			robot.set_vel(-20,20)
-			robot.delay(200)
+			robot.delay(400)
 		return

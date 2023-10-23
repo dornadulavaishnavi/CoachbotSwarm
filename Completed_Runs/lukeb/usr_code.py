@@ -26,7 +26,7 @@ def usr(robot):
     while True:
         robot.delay()
         if (robot.id == 0):
-            
+            log.write("Is robot 0\n")
             # if we received a message, print out info in message
             msgs = robot.recv_msg()
             if len(msgs) > 0:
@@ -55,6 +55,7 @@ def usr(robot):
             robot.set_vel(0, 0)
 
         if (robot.id == 1):
+            log.write("Is robot 1\n")
             # if we received a message, print out info in message
             msgs = robot.recv_msg()
             if len(msgs) > 0:
@@ -133,10 +134,10 @@ def usr(robot):
             #Set wheel velocities left=outside, right=inside
             robot.set_vel(whl_1_spd, whl_2_spd)
 
-            
+        log.write("loop\n")
             
             
         # your looping code here
 
-        log.close()
-        return
+    log.close()
+    return

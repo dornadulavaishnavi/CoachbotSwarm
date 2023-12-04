@@ -1,20 +1,9 @@
 import time
 import math
-import random
 import struct
-import traceback
 
 
 def get_theta(unit_vector):
-    """
-    Returns theta value from [-pi, pi] for a given vector.
-
-    Args:
-        unit_vector: A unit vectors array
-
-    Returns:
-        angle, in [-pi, pi]
-    """
     x, y = unit_vector.x, unit_vector.y
     if y >= 0:
         return math.acos(x)
@@ -23,18 +12,6 @@ def get_theta(unit_vector):
 
 
 def get_theta_diff(theta_target, theta_current):
-    """
-    Computes the minimum difference between two angles,
-    negative result indicates left and positive result
-    indicates right.
-
-    Args:
-        theta_target: Target angle to reach, in [-pi, pi]
-        theta_current: Current angle, in [-pi, pi]
-
-    Returns:
-        angle difference, in [-pi, pi]
-    """
     diff = theta_target - theta_current
     if math.fabs(diff) > math.pi:
         if theta_target > theta_current:
@@ -48,9 +25,6 @@ def get_theta_diff(theta_target, theta_current):
 
 
 def get_pose_safe(robot):
-    """
-    Gets the pose info of the robot, until a result is returned
-    """
     pose = None
     while not pose:
         pose = robot.get_pose()
@@ -150,98 +124,91 @@ def usr(robot):
     robot_0_position_estimate = PositionEstimate("robo0")
     change_timer = time.time()
     robot_id = robot.assigned_id
-    try:
-        while True:
-            robot.delay()
-            if robot_id == 0:
-                position, direction = get_pose_safe(robot)
-                robot.send_msg(struct.pack("ff", position.x, position.y))
 
-                msgs = robot.recv_msg()
-                if len(msgs) > 0:
-                    robot_1_position = Vector2D(*struct.unpack("ff", msgs[0][:8]))
-                    distance = (position - robot_1_position).length()
+while True:
+    robot.delay()
+    if robot_id == 0:
+        position, direction = get_pose_safe(robot)
+        robot.send_msg(struct.pack("ff", position.x, position.y))
 
-                    if distance > desired_distance:
-                        # red
-                        robot.set_led(100, 0, 0)
-                    else:
-                        # green
-                        robot.set_led(0, 100, 0)
+        msgs = robot.recv_msg()
+        if len(msgs) > 0:
+            robot_1_position = Vector2D(*struct.unpack("ff", msgs[0][:8]))
+            distance = (position - robot_1_position).length()
 
-                if time.time() - change_timer > 3:
-                    change_timer = time.time()
-                    robot.set_vel(random.random() * 10, random.random() * 10)
+            if distance > desired_distance:
+                # red
+                robot.set_led(100, 0, 0)
+            else:
+                # green
+                robot.set_led(0, 100, 0)
 
-            if robot_id == 1:
-                msgs = robot.recv_msg()
+    if robot_id == 1:
+        msgs = robot.recv_msg()
 
-                if len(msgs) > 0:
-                    robot_0_position = Vector2D(*struct.unpack("ff", msgs[0][:8]))
-                    # Update position estimate of robot 0 when receiving position information
-                    robot_0_position_estimate.update(robot_0_position)
+        if len(msgs) > 0:
+            robot_0_position = Vector2D(*struct.unpack("ff", msgs[0][:8]))
+            # Update position estimate of robot 0 when receiving position information
+            robot_0_position_estimate.update(robot_0_position)
 
-                position, direction = get_pose_safe(robot)
+        position, direction = get_pose_safe(robot)
 
-                # send current position information to robot 0
-                robot.send_msg(struct.pack("ff", position.x, position.y))
+        # send current position information to robot 0
+        robot.send_msg(struct.pack("ff", position.x, position.y))
 
-                # update control every time we get current position
-                # we cannot use position estimate on robot1 because the update
-                # speed will be much higher, and in every update the speed of
-                # robot 1 is updated, resulted in a high error
-                robot_0_position = robot_0_position_estimate.get_position_estimate()
-                if robot_0_position is not None:
-                    # position difference vector from robot 1 to 0
-                    position_diff_vec = robot_0_position - position
+        # update control every time we get current position
+        # we cannot use position estimate on robot1 because the update
+        # speed will be much higher, and in every update the speed of
+        # robot 1 is updated, resulted in a high error
+        robot_0_position = robot_0_position_estimate.get_position_estimate()
+        if robot_0_position is not None:
+            # position difference vector from robot 1 to 0
+            position_diff_vec = robot_0_position - position
 
-                    # unit vector of orbit speed term, always vertical to
-                    # vector pointing from robot 1 to 0
-                    orbit_speed_u_vec = Vector2D(
-                        -position_diff_vec.y, position_diff_vec.x
-                    )
-                    orbit_speed_u_vec = orbit_speed_u_vec / orbit_speed_u_vec.length()
+            # unit vector of orbit speed term, always vertical to
+            # vector pointing from robot 1 to 0
+            orbit_speed_u_vec = Vector2D(
+                -position_diff_vec.y, position_diff_vec.x
+            )
+            orbit_speed_u_vec = orbit_speed_u_vec / orbit_speed_u_vec.length()
 
-                    # unit vector of correction speed term, used for correcting
-                    # distance error between robot 1 and 0
-                    correction_speed_u_vec = (
-                        position_diff_vec / position_diff_vec.length()
-                    )
+            # unit vector of correction speed term, used for correcting
+            # distance error between robot 1 and 0
+            correction_speed_u_vec = (
+                position_diff_vec / position_diff_vec.length()
+            )
 
-                    # positive correction_strength is attractive and negative is repulsive
-                    correction_strength = clip(
-                        (position_diff_vec.length() - desired_distance)
-                        / robot_1_correction_distance_bound,
-                        -1,
-                        1,
-                    )
+            # positive correction_strength is attractive and negative is repulsive
+            correction_strength = clip(
+                (position_diff_vec.length() - desired_distance)
+                / robot_1_correction_distance_bound,
+                -1,
+                1,
+            )
 
-                    # final speed vector is a mixture of orbit speed, correction speed,
-                    # and adding the speed estimate of robot 0
-                    speed_vec = (
-                        orbit_speed_u_vec * robot_1_orbit_speed
-                        + correction_speed_u_vec
-                        * correction_strength
-                        * robot_1_correction_max_speed
-                        + robot_0_position_estimate.get_speed_estimate()
-                        * robot_1_speed_estimate_weight
-                    )
+            # final speed vector is a mixture of orbit speed, correction speed,
+            # and adding the speed estimate of robot 0
+            speed_vec = (
+                orbit_speed_u_vec * robot_1_orbit_speed
+                + correction_speed_u_vec
+                * correction_strength
+                * robot_1_correction_max_speed
+                + robot_0_position_estimate.get_speed_estimate()
+                * robot_1_speed_estimate_weight
+            )
 
-                    # move wheels
-                    speed = speed_vec.length()
-                    speed_direction = get_theta(speed_vec / speed)
+            # move wheels
+            speed = speed_vec.length()
+            speed_direction = get_theta(speed_vec / speed)
 
-                    # compute minimum theta difference between target speed direction
-                    # and current direction
-                    min_diff = get_theta_diff(speed_direction, direction)
+            # compute minimum theta difference between target speed direction
+            # and current direction
+            min_diff = get_theta_diff(speed_direction, direction)
 
-                    # correct speed using a proportional controller
-                    robot_1_wheel_speeds = [
-                        speed + robot_1_wheel_diff_weight * min_diff,
-                        speed - robot_1_wheel_diff_weight * min_diff,
-                    ]
+            # correct speed using a proportional controller
+            robot_1_wheel_speeds = [
+                speed + robot_1_wheel_diff_weight * min_diff,
+                speed - robot_1_wheel_diff_weight * min_diff,
+            ]
 
-                    robot.set_vel(robot_1_wheel_speeds[0], robot_1_wheel_speeds[1])
-    except Exception as e:
-        print(traceback.format_exc())
-        print(e)
+            robot.set_vel(robot_1_wheel_speeds[0], robot_1_wheel_speeds[1])

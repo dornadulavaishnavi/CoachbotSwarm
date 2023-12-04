@@ -125,7 +125,7 @@ def usr(robot):
     robot_0_position_estimate = PositionEstimate("robo0")
     change_timer = time.time()
     robot_id = robot.assigned_id
-
+    log.write("start")
     while True:
         # robot.delay()
         if robot_id == 0:

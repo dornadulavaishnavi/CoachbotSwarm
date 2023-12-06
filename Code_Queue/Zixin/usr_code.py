@@ -3,22 +3,27 @@ import struct
 import numpy as np
 
 def usr(robot):
-    alpha = math.pi / 12
-
     robot.delay(3000)
-    log = open("experiment_log", "wb")    
+    log = open("experiment_log", "wb")
     log.write("an example write string\n")
     log.flush()
 
+    alpha = math.pi / 12
+
     while True:
-        robot.delay(20)
-                
+        robot.delay()
+
+        msgs = robot.recv_msg()
+
         pose = robot.get_pose()
         pos_j = np.array([pose[0], pose[1]])
         theta_j = pose[2]
-        robot.send_msg(struct.pack("ffi", pos_j[0], pos_j[1], robot.virtual_id()))
+        if pose:
+            log.write(str(theta_j))
+            log.flush()
 
-        msgs = robot.recv_msg()
+            robot.send_msg(struct.pack("ffi", pos_j[0], pos_j[1], robot.virtual_id()))        
+        
         id_count = np.zeros(10)
 
         seen_fish = False
@@ -35,6 +40,6 @@ def usr(robot):
                             seen_fish = True
         
         if seen_fish == False:
-            robot.set_vel(25, 20)
+            robot.set_vel(15, 10)
         else:
-            robot.set_vel(20, 25)
+            robot.set_vel(10, 15)

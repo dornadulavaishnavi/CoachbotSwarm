@@ -1,0 +1,2 @@
+an example write string
+-0.749946713448

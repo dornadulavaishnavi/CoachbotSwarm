@@ -1,2 +1,0 @@
-an example write string
--2.19440102577-2.22199702263

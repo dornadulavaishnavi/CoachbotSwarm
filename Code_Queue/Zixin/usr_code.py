@@ -25,17 +25,16 @@ def usr(robot):
         id = robot.virtual_id()
         log.write("Got ID.\n")
         log.flush()
-
-        str = str(pos_j) + ", " + str(pose[2]) + ", " + str(id) + "\n"
-        log.write(str)
-        log.flush()
         
         robot.send_msg(struct.pack("ffi", pos_j[0], pos_j[1], id))
         log.write("Msg sent.\n")
         log.flush()
 
         msgs = robot.recv_msg()
-        id_count = np.zeros(10)
+        log.write("Msg received.\n")
+        log.flush()
+        
+        id_count = np.zeros(100)
 
         seen_fish = False
         if len(msgs) > 0:

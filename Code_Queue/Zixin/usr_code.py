@@ -10,29 +10,29 @@ def usr(robot):
     
     robot.set_led(100, 0, 0)
 
-    log.write("Loop start!")
+    log.write("Loop start!\n")
     log.flush()
     while True:
         robot.delay(10)
         
         pose = robot.get_pose()
-        log.write("Got pose.")
-        log.flush()
-
         pos_j = np.array([pose[0], pose[1]])
+        theta_j = pose[2]
+        dist_origin = math.sqrt(pose[0]**2 + pose[1]**2)
+        log.write("Got pose.\n")
+        log.flush()        
 
         id = robot.virtual_id()
-        log.writ("Got ID.")
+        log.write("Got ID.\n")
         log.flush()
-        
-        dist_origin = math.sqrt(pose[0]**2 + pose[1]**2)
 
-        str = str(pos_j) + ", " + str(pose[2]) + ", " + str(id)
+        str = str(pos_j) + ", " + str(pose[2]) + ", " + str(id) + "\n"
         log.write(str)
         log.flush()
-
-        theta_j = pose[2]
+        
         robot.send_msg(struct.pack("ffi", pos_j[0], pos_j[1], id))
+        log.write("Msg sent.\n")
+        log.flush()
 
         msgs = robot.recv_msg()
         id_count = np.zeros(10)

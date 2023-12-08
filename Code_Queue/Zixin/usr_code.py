@@ -5,20 +5,28 @@ import numpy as np
 def usr(robot):
     robot.delay(3000)
     log = open("experiment_log", "wb")    
-    log.write("an example write string\n")
-    log.flush()
 
     alpha = math.pi / 12
     
     robot.set_led(100, 0, 0)
 
+    log.write("Loop start!")
+    log.flush()
     while True:
         robot.delay(10)
-                
+        
         pose = robot.get_pose()
+        log.write("Got pose.")
+        log.flush()
+
         pos_j = np.array([pose[0], pose[1]])
+
         id = robot.virtual_id()
+        log.writ("Got ID.")
+        log.flush()
+        
         dist_origin = math.sqrt(pose[0]**2 + pose[1]**2)
+
         str = str(pos_j) + ", " + str(pose[2]) + ", " + str(id)
         log.write(str)
         log.flush()

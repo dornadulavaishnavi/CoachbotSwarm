@@ -1,5 +1,0 @@
-Loop start!
-Got pose.
-Got ID.
-Msg sent.
-Msg received.

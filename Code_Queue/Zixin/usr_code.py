@@ -13,14 +13,14 @@ def usr(robot):
     log.write("Loop start!\n")
     log.flush()
     while True:
-        robot.delay(10)
+        robot.delay()
         
         pose = robot.get_pose()
         pos_j = np.array([pose[0], pose[1]])
         theta_j = pose[2]
         dist_origin = math.sqrt(pose[0]**2 + pose[1]**2)
         log.write("Got pose.\n")
-        log.flush()        
+        log.flush()
 
         id = robot.virtual_id()
         log.write("Got ID.\n")
@@ -50,10 +50,18 @@ def usr(robot):
                         # if has "seen" another fish
                         if abs(theta_ji - theta_j) < alpha:
                             seen_fish = True
+                            log.write("There is a fish!\n")
+                            log.flush()
         
         if seen_fish == False:
             # turn clockwise
-            robot.set_vel(25 + dist_origin - 1, 20)
+            log.write("Didn't see any fish!\n")
+            log.flush()
+            robot.set_vel(15 + dist_origin - 1, 10)
+            log.write("Vel cmd sent.\n")
+            log.flush()
         else:
             # turn counterclockwise
-            robot.set_vel(20, 25)
+            robot.set_vel(10, 15)
+            log.write("Vel cmd sent.\n")
+            log.flush()

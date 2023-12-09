@@ -1,0 +1,9 @@
+Loop start!
+Got pose.
+Msg sent.
+Msg received.
+Didn't see any fish!
+Vel cmd sent.
+Got pose.
+Msg sent.
+Msg received.

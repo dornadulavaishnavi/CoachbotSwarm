@@ -1,0 +1,26 @@
+an example write string
+got starting pose
+ 1.6816163063
+velocity is 10
+
+switching pose
+62.7366170883
+velocity is 10
+
+switching pose
+32.0710411072
+velocity is 20
+
+switching pose
+23.0188980103
+velocity is 30
+
+switching pose
+17.2383239269
+velocity is 40
+
+switching pose
+13.0289061069
+velocity is 50
+
+done with code

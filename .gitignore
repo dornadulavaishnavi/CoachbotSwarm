@@ -1,2 +1,5 @@
 pull_repo.sh
 push_repo.sh
+.DS_Store
+.cache/
+.*

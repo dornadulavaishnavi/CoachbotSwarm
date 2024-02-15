@@ -8,10 +8,10 @@ Every submission to our system must be a folder with three files. The first is a
 Initial Positions
 The initial positions of your robot must be specified in a csv file named init_poses.csv. The values specified must follow the rules listed below.
 Each row should specify an ID number, x position, y position, and theta angle in radians. The ID number should be a whole number integer, while the x,y, and theta positions can be floats. 
-The play field is sized at -1.4 to 1.3 in the x and -1.6 to 1.5 in the y so the x and y positions must be within those dimensions. 
+The play field is sized at -1.2 to 1.0 in the x and -1.4 to 2.35 in the y so the x and y positions must be within those dimensions. 
 There are currently 50 robots active in the Coachbot swarm so please limit your number of robots to 25.
 The ID number must be between 0 and 99.
-Each robot must start 30 cm away from each other.
+Each robot must start 25 cm away from each other.
 The x and y positions are in meters while the theta value is in radians
 
 Example init_poses.csv file:

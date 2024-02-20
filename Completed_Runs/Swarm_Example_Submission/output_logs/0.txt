@@ -1,0 +1,6 @@
+an example write string
+My current pose is (0.7443971633911133, 1.0099942684173584, 3.104165554046631)
+Turning left!
+I received 0 messages
+Turning Left!
+My ID is 0

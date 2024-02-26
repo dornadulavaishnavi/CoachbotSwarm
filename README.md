@@ -33,7 +33,7 @@ Once you clone the Coachbot Swarm repository to your local machine, the first pl
 The experiment code must be written in a particular format to run properly on the swarm and every robot in the experiment will run the same user code. Start by copying the usr_code.py file from the Example Folder. This file contains the proper format to begin writing an algorithm for the robots. The robots run the *def usr(robot)* function similar to a *main* function. Within this function, users write a *while True* loop for the robots to continuously execute until some user specified return condition is met. We highly recommend writting statements into the *experiment_log* folder to aid in debugging.
 
 #### Robot API Functions
-These functions are available for a user to access the robot's capabilities and perform tasks such as motion, messaging, and localization. Check out our API Overview tutorial here for a quick introduction: https://youtu.be/KC8QtUyUukE
+These functions are available for a user to access the robot's capabilities and perform tasks such as motion, messaging, and localization. Check out our API Overview tutorial here for a quick introduction: [https://youtu.be/KC8QtUyUukE](https://youtu.be/Z8qkd0gtyGM)
 
 ##### robot.set_vel(left,right)
 

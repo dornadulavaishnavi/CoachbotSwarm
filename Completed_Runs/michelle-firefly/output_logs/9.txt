@@ -1,4 +1,6 @@
 an example write string
-here
-moving towards goal
-switching pose
+My current pose is (-0.5045209527015686, -0.4810822904109955, 0.04873956739902496)
+Turning Right!
+I received 0 messages
+Turning Right!
+My ID is 2

@@ -1,5 +1,302 @@
-Loop start!
-Got pose.
-Got ID.
-Msg sent.
-Msg received.
+an example write string
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+Separation/cohesion/alignment error
+No vectors yet!
+No (x,y)
+No heading
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(
+This did not work :(

@@ -1,6 +1,26 @@
 an example write string
-My current pose is (0.23654785752296448, 0.26282811164855957, 3.136552572250366)
-Turning left!
-I received 7 messages
-Turning Left!
-My ID is 7
+got starting pose
+ 1.65900230408
+velocity is 10
+
+switching pose
+63.3409729004
+velocity is 10
+
+switching pose
+34.0738830566
+velocity is 20
+
+switching pose
+15.5369138718
+velocity is 30
+
+switching pose
+16.0346951485
+velocity is 40
+
+switching pose
+12.8287010193
+velocity is 50
+
+done with code

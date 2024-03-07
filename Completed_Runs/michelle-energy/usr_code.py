@@ -5,7 +5,9 @@ import struct
 # Current setup: fixed amount of food, robots all move around until all the food is collected
 
 def usr(robot): 
-    robot.log("*****NEW TRIAL*****")
+    robot.delay(3000)
+
+    # robot.log("*****NEW TRIAL*****")
     id = robot.id
 
     if id == 0:
@@ -16,9 +18,11 @@ def usr(robot):
     
     start_time = robot.get_clock()
 
-    spawn_rate = 50
+    spawn_rate = 5
 
     while True:
+        robot.delay()
+
         if id == 0: # This is the food robot, it broadcasts food item positions every <spawn_rate> seconds
             # Step 1: Generate a random food position every _ seconds
             curr_time = robot.get_clock()
@@ -37,9 +41,11 @@ def usr(robot):
                     dist_to_bot = (recvd_pose[0] - food_posn[0])**2 + (recvd_pose[1] - food_posn[1])**2 # Omit square root <= not necessary for comparison
                     if dist_to_bot < 0.02: 
                         time_of_collection = robot.get_clock() # This is the time at which the food was collected
-                        food_lifespan = time_of_collection - food_posn[2] # This is the duration of time for which the food item has existed 
-
-                        robot.log([time_of_collection, food_lifespan])
+                        # food_lifespan = time_of_collection - food_posn[2] # This is the duration of time for which the food item has existed 
+                        log = open("experiment_log", "wb")
+                        log.write(f"{time_of_collection}\n")
+                        log.close()
+                        # robot.log([time_of_collection, food_lifespan])
                         food_list.remove(food_posn)
         else:
             # Move randomly

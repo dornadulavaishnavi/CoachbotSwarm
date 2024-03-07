@@ -1,7 +1,7 @@
 import random
 
 def usr(robot):
-
+    robot.delay(3000)
     T = random.randint(1000,1300)
     # print(T)
     id = robot.id
@@ -12,7 +12,8 @@ def usr(robot):
     if id == 5:
         robot.delay(1000)
     while True:
-        robot.start_new_loop()
+        # robot.start_new_loop()
+        robot.delay()
         
         if id == 5:
             robot.set_led(0,100,0)

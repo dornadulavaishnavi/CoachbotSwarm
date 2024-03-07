@@ -1,5 +1,1 @@
-Loop start!
-Got pose.
-Got ID.
-Msg sent.
-Msg received.
+an example write string
